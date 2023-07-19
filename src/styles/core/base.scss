@@ -1,0 +1,20 @@
+@use '@/styles/abstracts/variables.module' as *;
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  font-family: system-ui;
+  font-size: 1.125rem;
+  line-height: 1.2;
+
+  background-color: $baseColor;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
