@@ -1,5 +1,6 @@
 .Root {
   .container {
+    min-height: 100vh;
     display: grid;
     grid-auto-columns: 1fr;
     grid-template-columns: 0.4fr 1.6fr;
