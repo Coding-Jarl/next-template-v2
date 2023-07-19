@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/app.scss'
+import styles from '@/styles/layouts/Root.module.scss'
 
 export const metadata: Metadata = {
   title: 'Next Template',
@@ -13,7 +14,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={styles.Root}>
+        <div className={styles.container}>
+          <div className={styles.Logo}>Logo</div>
+          <div className={styles.Hotlinks}>Hotlinks</div>
+          <div className={styles.Nav}>Nav</div>
+          <div className={styles.Main}>{children}</div>
+        </div>
+      </body>
     </html>
   )
 }
