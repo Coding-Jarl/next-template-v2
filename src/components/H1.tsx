@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 // import clsx from 'clsx'
 import styles from '@/styles/components/H1.module.scss'
 
