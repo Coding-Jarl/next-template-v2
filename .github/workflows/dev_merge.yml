@@ -1,0 +1,16 @@
+name: Release
+run-name: Release
+on:
+  pull_request:
+    branch: dev
+    types: [closed]
+jobs:
+  Test:
+    if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm ci
+      - name: WiP tests
+        run: echo "We should launch e2e tests here"

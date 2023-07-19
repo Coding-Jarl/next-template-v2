@@ -1,0 +1,14 @@
+name: Run Tests [WiP]
+run-name: Run Tests [WiP]
+on:
+  pull_request:
+    branch: dev
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm ci
+      - name: WiP log
+        run: echo "We should launch unit tests here"

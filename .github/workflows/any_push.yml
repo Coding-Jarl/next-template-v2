@@ -1,0 +1,28 @@
+name: Lint
+run-name: Lint new code
+on:
+  push:
+    branches: ['!main', '!master', '!dev', '**']
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+      - run: npm ci
+      - run: npm run lint
+      - name: Commit & Push changes
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.email "github-actions@github.com"
+            git config --global user.name "GitHub Actions"
+            git add .
+            git commit -m "Automatic Lint & Format changes" -a
+            git push
+          else
+            echo "Files were clean, no action performed."
+          fi
