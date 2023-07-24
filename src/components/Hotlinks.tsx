@@ -1,7 +1,7 @@
 'use client'
 import clsx from 'clsx'
 import styles from '@/styles/components/Hotlinks.module.scss'
-import { FormEvent, useRef, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import { SearchReturn } from '@/app/api/search/route'
 
 export default function Hotlinks() {
@@ -15,10 +15,29 @@ export default function Hotlinks() {
 
   const hChange = async (evt: FormEvent<HTMLInputElement>) => {
     setNeedle(evt.currentTarget.value)
+  }
 
+  const hFocus = () => {
+    setSearchFocus(document.activeElement === searchRef.current)
+  }
+
+  const hasResult = Boolean(
+    searchResults.articles.length + searchResults.users.length
+  )
+
+  const cssClasses = clsx(
+    styles.search,
+    searchFocused || styles.unfocused,
+    needle === '' && styles.empty,
+    hasResult ? styles.results : styles.noresults
+  )
+
+  const fetchSearch = async (needle: string) => {
+    if (needle === '') return
+    
     try {
       const res = await fetch(
-        `http://localhost:3000/api/search?needle=${evt.currentTarget.value}`
+        `http://localhost:3000/api/search?needle=${needle}`
       )
       const results = await res.json()
       setSearchResults(results)
@@ -27,18 +46,9 @@ export default function Hotlinks() {
     }
   }
 
-  const hFocus = () => {
-    setSearchFocus(document.activeElement === searchRef.current)
-  }
-
-  const cssClasses = clsx(
-    styles.search,
-    searchFocused || styles.unfocused,
-    needle === '' && styles.empty,
-    searchResults.articles.length + searchResults.users.length
-      ? styles.results
-      : styles.noresults
-  )
+  useEffect(() => {
+    fetchSearch(needle)
+  }, [needle])
 
   return (
     <header className={styles.header}>
