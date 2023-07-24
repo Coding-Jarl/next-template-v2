@@ -23,7 +23,7 @@
       width: 100%;
     }
 
-    ul {
+    & > ul {
       position: absolute;
       width: 100%;
       background-color: color.scale($baseColor, $lightness: -30%);

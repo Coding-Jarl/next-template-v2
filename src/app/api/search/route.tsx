@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 
-export type SearchReturn = Awaited<ReturnType<typeof GET>>
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const needle = searchParams.get('needle')?.toLowerCase() || ''
