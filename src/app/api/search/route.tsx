@@ -1,4 +1,8 @@
+import { ApiResponse } from '@/types/global'
 import { NextResponse } from 'next/server'
+
+
+export type SearchReturn = ApiResponse<typeof GET>
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)

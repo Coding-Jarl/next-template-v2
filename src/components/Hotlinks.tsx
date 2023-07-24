@@ -2,11 +2,12 @@
 import clsx from 'clsx'
 import styles from '@/styles/components/Hotlinks.module.scss'
 import { FormEvent, useRef, useState } from 'react'
+import { SearchReturn } from '@/app/api/search/route'
 
 export default function Hotlinks() {
   const [needle, setNeedle] = useState('')
   const [searchFocused, setSearchFocus] = useState(false)
-  const [searchResults, setSearchResults] = useState<API.SearchReturn>({
+  const [searchResults, setSearchResults] = useState<SearchReturn>({
     users: [],
     articles: [],
   })
