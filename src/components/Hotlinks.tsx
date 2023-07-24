@@ -2,14 +2,36 @@
 import clsx from 'clsx'
 import styles from '@/styles/components/Hotlinks.module.scss'
 import { FormEvent, useRef, useState } from 'react'
+import { SearchReturn } from '@/app/api/search/route'
 
 export default function Hotlinks() {
   const [needle, setNeedle] = useState('')
   const [searchFocused, setSearchFocus] = useState(false)
+  const [searchResults, setSearchResults] = useState({
+    users: [] as Array<{
+      id: number
+      name: string
+    }>,
+    articles: [] as Array<{
+      id: number
+      title: string
+      content: string
+    }>,
+  })
   const searchRef = useRef<HTMLInputElement>(null)
 
-  const hChange = (evt: FormEvent<HTMLInputElement>) => {
+  const hChange = async (evt: FormEvent<HTMLInputElement>) => {
     setNeedle(evt.currentTarget.value)
+
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/search?needle=${evt.currentTarget.value}`
+      )
+      const results = await res.json()
+      setSearchResults(results)
+    } catch (err) {
+      console.log('Woops')
+    }
   }
 
   const hFocus = () => {
@@ -20,7 +42,9 @@ export default function Hotlinks() {
     styles.search,
     searchFocused || styles.unfocused,
     needle === '' && styles.empty,
-    needle.includes('Val') ? styles.results : styles.noresults
+    searchResults.articles.length + searchResults.users.length
+      ? styles.results
+      : styles.noresults
   )
 
   return (
@@ -35,11 +59,20 @@ export default function Hotlinks() {
           onBlur={hFocus}
         />
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
+          <li>
+            <ul>
+              {searchResults.users.map((elt) => (
+                <li key={elt.id}>{elt.name}</li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <ul>
+              {searchResults.articles.map((elt) => (
+                <li key={elt.id}>{elt.title}</li>
+              ))}
+            </ul>
+          </li>
         </ul>
       </div>
     </header>
