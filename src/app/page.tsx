@@ -1,9 +1,11 @@
-import H1 from '@/components/H1'
+import Description from '@/components/Description'
+import Hero from '@/components/Hero'
 
 export default function Home() {
   return (
-    <main>
-      <H1 label="Hello world" />
-    </main>
+    <>
+      <Hero />
+      <Description />
+    </>
   )
 }
