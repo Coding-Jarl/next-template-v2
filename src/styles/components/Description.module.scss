@@ -1,0 +1,11 @@
+@use '@/styles/abstracts/variables.module' as *;
+
+.wrapper {
+  background-color: $baseColor;
+  padding-top: 10vh;
+
+  & > * {
+    width: 80%;
+    margin: auto;
+  }
+}
