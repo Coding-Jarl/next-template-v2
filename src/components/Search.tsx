@@ -1,9 +1,9 @@
 'use client'
 import clsx from 'clsx'
-import styles from '@/styles/components/Hotlinks.module.scss'
+import styles from '@/styles/components/Search.module.scss'
 import { FormEvent, useRef, useState } from 'react'
 
-export default function Hotlinks() {
+export default function Search() {
   const [needle, setNeedle] = useState('')
   const [searchFocused, setSearchFocus] = useState(false)
   const [searchResults, setSearchResults] = useState<API.SearchReturn>({
@@ -22,7 +22,7 @@ export default function Hotlinks() {
       const results = await res.json()
       setSearchResults(results)
     } catch (err) {
-      console.log('Woops')
+      console.warn('Woops')
     }
   }
 
@@ -40,14 +40,34 @@ export default function Hotlinks() {
   )
 
   return (
-    <div className={styles.wrapper}>
-      <nav>
-        <a className={styles.Logo}>Next Template</a>
-        <a href="">Link #1</a>
-        <a href="">Link #2</a>
-        <a href="">Link #3</a>
-      </nav>
-    </div>
+    <header className={styles.wrapper}>
+      <div className={cssClasses}>
+        <input
+          ref={searchRef}
+          type="search"
+          value={needle}
+          onChange={hChange}
+          onFocus={hFocus}
+          onBlur={hFocus}
+        />
+        <ul>
+          <li>
+            <ul>
+              {searchResults.users.map((elt) => (
+                <li key={elt.id}>{elt.name}</li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <ul>
+              {searchResults.articles.map((elt) => (
+                <li key={elt.id}>{elt.title}</li>
+              ))}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
   )
 }
 
