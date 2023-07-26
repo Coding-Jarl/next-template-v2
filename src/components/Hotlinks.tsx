@@ -3,14 +3,14 @@ import clsx from 'clsx'
 import styles from '@/styles/components/Hotlinks.module.scss'
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { SearchReturn } from '@/app/api/search/route'
+import { DEFAULT_RESULT_SEARCH, fetchSearch } from '@/lib/api/search'
 
 export default function Hotlinks() {
   const [needle, setNeedle] = useState('')
   const [searchFocused, setSearchFocus] = useState(false)
-  const [searchResults, setSearchResults] = useState<SearchReturn>({
-    users: [],
-    articles: [],
-  })
+  const [searchResults, setSearchResults] = useState<SearchReturn>(
+    DEFAULT_RESULT_SEARCH
+  )
   const searchRef = useRef<HTMLInputElement>(null)
 
   const hChange = async (evt: FormEvent<HTMLInputElement>) => {
@@ -32,22 +32,12 @@ export default function Hotlinks() {
     hasResult ? styles.results : styles.noresults
   )
 
-  const fetchSearch = async (needle: string) => {
-    if (needle === '') return
-    
-    try {
-      const res = await fetch(
-        `http://localhost:3000/api/search?needle=${needle}`
-      )
-      const results = await res.json()
-      setSearchResults(results)
-    } catch (err) {
-      console.log('Woops')
-    }
-  }
-
   useEffect(() => {
-    fetchSearch(needle)
+    const fetchResults = async () => {
+      const results = await fetchSearch(needle)
+      setSearchResults(results ?? DEFAULT_RESULT_SEARCH)
+    }
+    fetchResults()
   }, [needle])
 
   return (
