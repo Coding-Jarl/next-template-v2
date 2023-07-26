@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/Coding-Jarl/next-template-v2/compare/v0.1.1...v0.1.2) (2023-07-26)
+
+
+### ✨ Features
+
+* create Description component ([316e33b](https://github.com/Coding-Jarl/next-template-v2/commit/316e33b79dfc7724ed3cf05608a04dcb8ff5656f))
+* create Hero component ([f181e93](https://github.com/Coding-Jarl/next-template-v2/commit/f181e93940c5617d4510af07752d4031172c79d2))
+
+
+### 🐛 Bug Fixes
+
+* add missing image for Hero ([495715a](https://github.com/Coding-Jarl/next-template-v2/commit/495715aa4544499bd5df78c0776e0cb052896934))
+
+
+### ♻️ Code Refactoring
+
+* add variables to _variables + use it in base.scss ([813770d](https://github.com/Coding-Jarl/next-template-v2/commit/813770df9e4c3952e5c77eb2f759885af0426362))
+* fix global layout ([7a9e4e7](https://github.com/Coding-Jarl/next-template-v2/commit/7a9e4e723d18a305641309a42fc8b7d9c936cd63))
+* remove useless initial files ([d654848](https://github.com/Coding-Jarl/next-template-v2/commit/d6548486bb1d15507fca4d93d559f4cf23e87790))
+* split Hotlinks & Searchbar ([ed07486](https://github.com/Coding-Jarl/next-template-v2/commit/ed07486e73beea5d9eee1e9dbdd4800855b5b0fb))
+
 ### 0.1.1 (2023-07-24)
 
 
