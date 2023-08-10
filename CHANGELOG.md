@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/Coding-Jarl/next-template-v2/compare/v0.1.2...v0.1.3) (2023-08-10)
+
+
+### ♻️ Code Refactoring
+
+* use <Link> instead of <a> tags ([8161b4a](https://github.com/Coding-Jarl/next-template-v2/commit/8161b4a2d58a1a64599c025e4f2d3fa109033c55))
+
+
+### ✨ Features
+
+* upgrade app description ([2a04014](https://github.com/Coding-Jarl/next-template-v2/commit/2a040148ed24cc91b1588a7bd08fd75456493b17))
+* upgrade CSS a bit, remove helper classes ([079993e](https://github.com/Coding-Jarl/next-template-v2/commit/079993eafbff4137b8f00af9dab49b23e1724f6e))
+
 ### [0.1.2](https://github.com/Coding-Jarl/next-template-v2/compare/v0.1.1...v0.1.2) (2023-07-26)
 
 
