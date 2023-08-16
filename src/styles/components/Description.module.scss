@@ -1,0 +1,26 @@
+@use '@/styles/abstracts/variables.module' as *;
+
+.wrapper {
+  background-color: $baseColor;
+  padding-top: 5ch;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5ch;
+  width: 80%;
+  margin: auto;
+  line-height: 2rem;
+
+  article {
+    width: 40%;
+
+    &:nth-of-type(2n) {
+      margin-left: 60%;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 0.5ch;
+    }
+  }
+}

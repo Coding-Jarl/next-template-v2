@@ -1,0 +1,32 @@
+.wrapper {
+  height: 60vh;
+  background-image: url('/heroBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .tilt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+
+    svg {
+      position: relative;
+      display: block;
+      width: calc(160% + 1.3px);
+      height: 106px;
+      transform: rotateY(180deg);
+    }
+
+    .shapeFill {
+      fill: #0a0a0a;
+    }
+  }
+}

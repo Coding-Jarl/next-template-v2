@@ -1,0 +1,19 @@
+@use 'sass:color';
+@use '@/styles/abstracts/variables.module' as *;
+
+.wrapper {
+  background-color: hsla(0, 0, 0, 80%);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .Logo {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  nav {
+    display: flex;
+    gap: 3ch;
+  }
+}

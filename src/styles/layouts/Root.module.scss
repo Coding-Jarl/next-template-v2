@@ -1,24 +1,8 @@
-.Root {
-  .container {
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-template-columns: 0.4fr 1.6fr;
-    grid-template-rows: 0.3fr 1.7fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      'Logo Hotlinks'
-      'Nav Main';
-  }
-  .Logo {
-    grid-area: Logo;
-  }
-  .Hotlinks {
-    grid-area: Hotlinks;
-  }
-  .Nav {
-    grid-area: Nav;
-  }
-  .Main {
-    grid-area: Main;
+.wrapper {
+  min-height: 100vh;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
   }
 }
